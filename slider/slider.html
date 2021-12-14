@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="slider.css">
+    <script src="slider.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/gsap.min.js"></script>
+    <title>Slider app</title>
+</head>
+<body>
+    <section aria-label="Presentation">
+        
+        <div class="slider-app" data-slider>
+            <div class="intro-modal">
+                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam</p>
+                <a href="#" class="start-btn">Démarrer la découverte</a>
+            </div>
+            <button class="slider-button prev" data-slider-button="prev">&#8593;</button>
+            <button class="slider-button next" data-slider-button="next">&#8595;</button>
+            <!--button lass="slider-button next"></button-->
+            <ul data-slides>
+                <li class="slide" data-active>
+                        <div class="slide-point" data-x="240" data-y="2295" data-h="165" data-w="165">&#9733;</div>
+                        <div class="slide-point" data-x="512" data-y="2155" data-h="165" data-w="165">&#9733;</div>
+                        <div class="slide-point" data-x="4524" data-y="3651" data-h="165" data-w="165">&#9733;</div>
+                        <img id="slide-img" src="./src/assets/stockpics/pic1.jpg" alt="Photo1">
+                </li>
+                <li class="slide">
+                    <div class="slide-point" id="chuteSopalin" data-x="1185" data-y="2889" data-h="165" data-w="165">&#9733;</div>
+                    <img src="./src/assets/stockpics/pic2.jpg" alt="Photo1">
+            </li>
+            <li class="slide">
+                <img src="./src/assets/stockpics/pic3.jpg" alt="Photo1">
+        </li>
+            </ul>
+        </div>
+        
+    </section>
+</body>
+</html>
