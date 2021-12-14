@@ -23,14 +23,14 @@
             <div class="slides-loader"></div>
             <div class="slides-prestart"></div>
             <ul class="slides-container" data-slides>
-                <li class="slide" style="margin-top:-90px;" data-active>
+                <li class="slide" style="margin-top:-100px;" data-active>
 
                         <div class="slide-point transparent-bg" data-x="88" data-y="365" data-h="65" data-w="157" data-box="box1">
                             <img class="slide-outline" src="./src/assets/stockpics/pic1x3outlinemask.png" alt="" height=10 width=20/>
                             <div class="modal" id="box1"><!--span class="close-box">&#10006;</span--><p>
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi laoreet lorem congue, fermentum tortor pharetra, semper libero. Nullam in quam eget lectus feugiat molestie et eu lacus. Etiam eget bibendum massa. 
                             </p></div>
-                            <div class="radius">
+                            <div class="radius radius-bottomleft">
                                 <span class="place"></span>
                                 <span class="border-animation ba1"></span>
                                 <span class="border-animation ba2"></span>
@@ -39,7 +39,7 @@
                         
                         </div>
                         
-                        <div class="slide-point transparent-bg" data-x="72" data-y="691" data-h="48" data-w="50"><div class="radius">
+                        <div class="slide-point transparent-bg" id="anim1Trigger" data-x="72" data-y="691" data-h="48" data-w="50"><div class="radius">
                             <span class="place"></span>
                             <span class="border-animation ba1"></span>
                             <span class="border-animation ba2"></span>
@@ -47,6 +47,11 @@
                           </div></div>
                         <!--div class="slide-point" data-x="512" data-y="2155" data-h="165" data-w="165">&#9733;</div>
                         <div class="slide-point" data-x="4524" data-y="3651" data-h="165" data-w="165">&#9733;</div-->
+                        <div class="slide-anim anim-chute" id="chuteSopalin" data-x="0" data-y="0" data-h="1528" data-w="1016">
+                            <video class="vAnim" id="paperAnim" preload ="true" width="500" height="500" >
+                                <source src="./src/assets/stockpics/paper.mp4"><!--./src/assets/stockpics/kitchen.webm-->
+                                </video>
+                        </div>
                         <img id="slide-img" src="./src/assets/stockpics/pic1x4.png" alt="Photo1">
                 </li>
                 <li class="slide">

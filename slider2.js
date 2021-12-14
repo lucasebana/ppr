@@ -85,6 +85,69 @@ const enable_buttons = ()=>{
     })
 }
 
+
+let SwitchSlide = (dir)=>{
+    (()=>{
+        const offset = dir
+        const slides = document.querySelector("[data-slides]")
+
+        const activeSlide = slides.querySelector("[data-active]")
+        let newIndex = [...slides.children].indexOf(activeSlide) + offset
+        const length = slides.children.length;
+        
+        if(newIndex >=0 && newIndex < length){
+            slides.children[newIndex].dataset.active = true;
+            
+            if( offset > 0){
+                gsap.fromTo(activeSlide,{y:"0"},{y:"-130%",ease:"power4.out",duration:0.1})
+                gsap.fromTo(activeSlide,{opacity:"1"},{opacity:"0",duration:0.25})
+                let v = activeSlide.querySelector(".vAnim");
+                if(v != undefined){
+                    //v.currentTime = 0;
+                }
+            }
+            else if(offset < 0){                
+                gsap.fromTo(slides.children[newIndex],{y:"-130%"},{y:"0%",ease:"power4.out",duration:0.1})
+                
+                gsap.to(slides.children[newIndex],{opacity:"1",duration:0.25})
+
+                let v = slides.children[newIndex].querySelector(".vAnim");
+                if(v != undefined){
+                    v.currentTime = 0;
+                }
+            }
+           
+
+
+
+            delete activeSlide.dataset.active;
+            window.align();
+        }
+        
+        if (newIndex === 1){
+            //document.querySelector("video").play();
+            document.querySelector("#kitchenAnim").currentTime = 0;
+            
+            document.querySelector("#feuillesAnim").pause();
+            setTimeout(()=>{document.querySelector("#kitchenAnim").play();},1000);
+            
+        }
+        if (newIndex === 2){
+            //document.querySelector("video").play();
+            
+            console.log("arrivee slide 2")
+            document.querySelector("#feuillesAnim").currentTime = 0;
+            
+            document.querySelector("#feuillesAnim").pause();
+            setTimeout(()=>{let v=document.querySelector("#feuillesAnim");v.play();},1700);
+            
+            
+        }
+
+    })()
+}
+
+
 window.align = ()=>{
     let points = document.querySelectorAll(".slide-point");
 
@@ -162,3 +225,15 @@ v.forEach(a=>{
         }
     })
 });
+
+let bt = document.querySelector("#anim1Trigger");
+bt.addEventListener("click",()=>{
+    let btvid = document.querySelector("#paperAnim")
+    btvid.play();
+    document.querySelector("#paperAnim").addEventListener("ended",()=>{
+        btvid.pause();
+        SwitchSlide(1);
+        setTimeout(()=>{btvid.currentTime=0},400);
+        
+    })
+})

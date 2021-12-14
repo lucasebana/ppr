@@ -203,12 +203,14 @@ body{
 
 .slide-point{
     position:absolute;
+    z-index:10;
     background:red;
     cursor:pointer;
 }
 
 .slide-anim{
     position:absolute;
+    z-index:5;
     overflow:hidden;
 }
 
@@ -252,12 +254,13 @@ body{
 }
 .anim-chute video{
     width:100%;
-    height:934px;
+    /*height:934px;*/
+    height:100%;
 }
 
 .radius{
-    width: 20px;
-    height:20px;
+    width: 19px;
+    height:19px;
     border-radius:100%;
     position:absolute;
     top:50%;
@@ -266,6 +269,11 @@ body{
     transform:translate(-50%,-50%);
     opacity:0.9
   }
+
+  .radius-bottomleft{
+    top:16% !important;
+    left:16% !important;
+  }  
 
   @keyframes rounder0 {
     from {transform:scale(0.9);}
