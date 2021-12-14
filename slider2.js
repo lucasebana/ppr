@@ -26,7 +26,6 @@ const enable_buttons = ()=>{
     buttons.forEach(button=>{
         button.addEventListener("click",()=>{
             const offset = button.dataset.sliderButton === "prev" ? -1 : 1;
-            console.log(offset)
             const slides = button.closest("[data-slider]").querySelector("[data-slides]")
     
             const activeSlide = slides.querySelector("[data-active]")
@@ -36,9 +35,9 @@ const enable_buttons = ()=>{
             if(newIndex >=0 && newIndex < length){
                 slides.children[newIndex].dataset.active = true;
                 
-                console.log(activeSlide);
                 if( offset > 0){
                     gsap.fromTo(activeSlide,{y:"0"},{y:"-130%",ease:"power4.out",duration:0.1})
+                    gsap.fromTo(activeSlide,{opacity:"1"},{opacity:"0",duration:0.25})
                     let v = activeSlide.querySelector(".vAnim");
                     if(v != undefined){
                         //v.currentTime = 0;
@@ -46,6 +45,9 @@ const enable_buttons = ()=>{
                 }
                 else if(offset < 0){                
                     gsap.fromTo(slides.children[newIndex],{y:"-130%"},{y:"0%",ease:"power4.out",duration:0.1})
+                    
+                    gsap.to(slides.children[newIndex],{opacity:"1",duration:0.25})
+
                     let v = slides.children[newIndex].querySelector(".vAnim");
                     if(v != undefined){
                         v.currentTime = 0;
@@ -62,14 +64,19 @@ const enable_buttons = ()=>{
             if (newIndex === 1){
                 //document.querySelector("video").play();
                 document.querySelector("#kitchenAnim").currentTime = 0;
+                
+                document.querySelector("#feuillesAnim").pause();
                 setTimeout(()=>{document.querySelector("#kitchenAnim").play();},1000);
                 
             }
             if (newIndex === 2){
                 //document.querySelector("video").play();
                 
+                console.log("arrivee slide 2")
                 document.querySelector("#feuillesAnim").currentTime = 0;
-                setTimeout(()=>{let v=document.querySelector("#feuillesAnim");v.play();},2000);
+                
+                document.querySelector("#feuillesAnim").pause();
+                setTimeout(()=>{let v=document.querySelector("#feuillesAnim");v.play();},1700);
                 
                 
             }
@@ -107,7 +114,6 @@ window.align = ()=>{
 
 let playKitchen = true;
 const startKitchen = (videoElement)=>{
-    console.log("startKitchen")
     let E = videoElement.addEventListener("timeupdate", function(){
         if(videoElement.currentTime >= 1/50*211 && playKitchen) {
             //videoElement.pause();
@@ -127,7 +133,6 @@ const kitchenClick = (videoElement)=>{
 
 document.addEventListener('DOMContentLoaded', (event) => {
     gsap.to(".slides-loader",{display:"none"});
-    console.log("loaded")
     window.align();
 
 

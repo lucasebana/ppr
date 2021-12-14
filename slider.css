@@ -342,6 +342,10 @@ body{
   .modal p{
       margin-top:20px;
       font-size:17px;
+      min-height:80%;
+      display:flex;
+      flex-direction: column;
+      justify-content: center;
   }
   
   #box1{
