@@ -25,6 +25,7 @@ const enable_buttons = ()=>{
     gsap.to(".slider-button",{display:"block"});
     buttons.forEach(button=>{
         button.addEventListener("click",()=>{
+            closeModals();
             const offset = button.dataset.sliderButton === "prev" ? -1 : 1;
             const slides = button.closest("[data-slider]").querySelector("[data-slides]")
     
@@ -89,9 +90,22 @@ const enable_buttons = ()=>{
     })
 }
 
+let closeModals = ()=>{
+    //close modals
+    let modals = document.querySelectorAll(".modal")
+    modals.forEach(m=>{
+        m.classList.remove("shown")
+        let tog = m.parentNode.querySelector(".slide-outline")
+        gsap.to(tog,{opacity:"0",ease:"stepped",duration:0.3})
+    });
+}
 
 let SwitchSlide = (dir)=>{
     (()=>{
+
+        
+        closeModals();
+
         const offset = dir
         const slides = document.querySelector("[data-slides]")
 
@@ -223,6 +237,16 @@ points.forEach(point=>{
         let modal = point.querySelector("#"+point.dataset.box);
         point.addEventListener("click",(e)=>{
             modal.classList.toggle("shown");
+            let tog = modal.parentNode.querySelector(".slide-outline")
+            if(modal.classList.contains("shown")){
+                if(tog){
+                    gsap.to(tog,{opacity:"0.4",ease:"stepped",duration:0.4})
+                }
+                //gsap.fromTo("")                
+            }
+            else{
+                gsap.to(tog,{opacity:"0",ease:"stepped",duration:0.3})
+            }
         });
     }
 });
